@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class RegisterTest {
     public WebDriver driver;
@@ -48,6 +49,20 @@ public class RegisterTest {
 
         WebElement hobbiesElement=driver.findElement(By.cssSelector("input[id='checkbox2']"));
         hobbiesElement.click();
+
+        WebElement skills=driver.findElement(By.id("Skills"));
+        Select dropdownskills= new Select(skills);
+        //dropdownskills.selectByIndex(2);
+        dropdownskills.selectByValue("Java");
+
+        WebElement year=driver.findElement(By.id("yearbox"));
+        Select dropdownyear= new Select(year);
+        dropdownyear.selectByValue("1970");
+
+
+        WebElement date=driver.findElement(By.id("daybox"));
+        Select dropdowndate= new Select(date);
+        dropdowndate.selectByValue("14");
         
 
         WebElement passwordElement=driver.findElement(By.cssSelector("input[ng-model='Password']"));
