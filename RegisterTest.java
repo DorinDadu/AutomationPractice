@@ -29,10 +29,10 @@ public class RegisterTest {
         String lastname="Puscasu";
         lastnameElement.sendKeys(lastname);
 
-       // WebElement adressElement=driver.findElement(By.cssSelector("input[ng-model='Adress']"));
-       // adressElement.click();
-       // String adress="Cluj-Napoca, Str. Doua avioane, nr.7";
-       // adressElement.sendKeys(adress);
+        WebElement adressElement=driver.findElement(By.cssSelector("textarea[ng-model='Adress']"));
+        adressElement.click();
+        String adress="Cluj-Napoca, Str. Doua avioane, nr.7";
+        adressElement.sendKeys(adress);
 
         WebElement emailAdressElement=driver.findElement(By.cssSelector("input[type='email']"));
         emailAdressElement.click();
@@ -50,14 +50,28 @@ public class RegisterTest {
         WebElement hobbiesElement=driver.findElement(By.cssSelector("input[id='checkbox2']"));
         hobbiesElement.click();
 
+        WebElement languages=driver.findElement(By.id("msdd"));
+        languages.click();
+
+        WebElement romanian = driver.findElement(By.xpath("//*[text()='Romanian']"));
+        romanian.click();
+
+
         WebElement skills=driver.findElement(By.id("Skills"));
         Select dropdownskills= new Select(skills);
-        //dropdownskills.selectByIndex(2);
         dropdownskills.selectByValue("Java");
+
+
+        WebElement australia = driver.findElement(By.xpath("//*[text()='Australia']"));
+        australia.click();
 
         WebElement year=driver.findElement(By.id("yearbox"));
         Select dropdownyear= new Select(year);
         dropdownyear.selectByValue("1970");
+
+        WebElement month=driver.findElement(By.cssSelector("select[placeholder='Month']"));
+        Select dropdownmonth= new Select(month);
+        dropdownmonth.selectByValue("January");
 
 
         WebElement date=driver.findElement(By.id("daybox"));
@@ -74,6 +88,14 @@ public class RegisterTest {
         confirmpasswordElement.click();
         String confirmpassword="alibaba_40";
         confirmpasswordElement.sendKeys(confirmpassword);
+
+        WebElement submitElement=driver.findElement(By.id("submitbtn"));
+        submitElement.click();
+
+        WebElement refreshElement=driver.findElement(By.id("Button1"));
+        refreshElement.click();
+
+        driver.quit();
 
 
 
