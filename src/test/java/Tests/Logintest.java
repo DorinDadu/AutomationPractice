@@ -45,7 +45,7 @@ public class Logintest {
         Assert.assertEquals("textul cautat nu e corect",expectedmsg,actualmsg);
         //quit=inchide instanta cu toate taburile deschise
         //close= inchide tabul curent
-       // driver.close();
+        driver.close();
     }
 
 }

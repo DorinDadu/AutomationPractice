@@ -1,11 +1,11 @@
 package Tests;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+
+import java.util.List;
 
 public class RegisterTest {
     public WebDriver driver;
@@ -52,31 +52,48 @@ public class RegisterTest {
 
         WebElement languages=driver.findElement(By.id("msdd"));
         languages.click();
+        JavascriptExecutor js=(JavascriptExecutor) driver;
+        js.executeScript("window.scrollBy(0,400)");
+        List<WebElement> languageOptions= driver.findElements(By.cssSelector(".ui-autocomplete.ui-front>li>a"));
+        for (int index=0;index< languageOptions.size();index++){
+            if (languageOptions.get(index).getText().equals("English")
+            || (languageOptions.get(index).getText().equals("Arabic"))){
+                languageOptions.get(index).click();
+            }
 
-        WebElement romanian = driver.findElement(By.xpath("//*[text()='Romanian']"));
-        romanian.click();
+            }
+
 
 
         WebElement skills=driver.findElement(By.id("Skills"));
         Select dropdownskills= new Select(skills);
-        dropdownskills.selectByValue("Java");
+        dropdownskills.selectByVisibleText("Java");
 
 
-        WebElement australia = driver.findElement(By.xpath("//*[text()='Australia']"));
-        australia.click();
+
+        WebElement countryInput = driver.findElement(By.cssSelector("span[role='combobox']"));
+        countryInput.click();
+        countryInput.sendKeys("Australia");
+        countryInput.sendKeys(Keys.ENTER);
+
 
         WebElement year=driver.findElement(By.id("yearbox"));
-        Select dropdownyear= new Select(year);
-        dropdownyear.selectByValue("1970");
+        Select yearSelect= new Select(year);
+        yearSelect.selectByValue("1970");
+        year.click();
+
 
         WebElement month=driver.findElement(By.cssSelector("select[placeholder='Month']"));
-        Select dropdownmonth= new Select(month);
-        dropdownmonth.selectByValue("January");
+        Select monthSelect=new Select(month);
+        monthSelect.selectByValue("January");
+        month.click();
 
 
-        WebElement date=driver.findElement(By.id("daybox"));
-        Select dropdowndate= new Select(date);
-        dropdowndate.selectByValue("14");
+        WebElement day=driver.findElement(By.id("daybox"));
+        Select daySelect= new Select(day);
+        daySelect.selectByValue("14");
+        day.click();
+
         
 
         WebElement passwordElement=driver.findElement(By.cssSelector("input[ng-model='Password']"));
@@ -89,10 +106,13 @@ public class RegisterTest {
         String confirmpassword="alibaba_40";
         confirmpasswordElement.sendKeys(confirmpassword);
 
+        WebElement uploadFileElement= driver.findElement(By.cssSelector("div>input[id=\"imagesrc\"]"));
+        uploadFileElement.sendKeys("C:\\Users\\Dadu\\Desktop\\IMG-20200606-WA0003.jpg");
+
         WebElement submitElement=driver.findElement(By.id("submitbtn"));
         submitElement.click();
 
-        WebElement refreshElement=driver.findElement(By.id("Button1"));
+       WebElement refreshElement=driver.findElement(By.id("Button1"));
         refreshElement.click();
 
         driver.quit();
