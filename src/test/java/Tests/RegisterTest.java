@@ -1,23 +1,20 @@
 package Tests;
 
+import Base.SharedData;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.WebDriver;
 
 import java.util.List;
 
-public class RegisterTest {
-    public WebDriver driver;
+public class RegisterTest extends SharedData {
 
     @Test
 
     public void Register(){
 
-        System.setProperty("webdriver.chrome.driver","C:\\Automation\\chromedriver.exe");
-        driver= new ChromeDriver();
-        driver.get("http://demo.automationtesting.in/Register.html");
-        driver.manage().window().maximize();
+
 
         WebElement firstnameElement=driver.findElement(By.cssSelector("input[placeholder='First Name']"));
         firstnameElement.click();
@@ -116,16 +113,6 @@ public class RegisterTest {
         refreshElement.click();
 
         driver.quit();
-
-
-
-
-
-
-
-
-
-
 
 
     }
