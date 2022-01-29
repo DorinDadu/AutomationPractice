@@ -13,8 +13,8 @@ public class AlertTest extends SharedData {
 
     @Test
     public void TestAutomat(){
-        WebElement SkipLoginelement=driver.findElement(By.cssSelector("[id='btn2'"));
-        SkipLoginelement.click();
+        WebElement SkipSigninelement=driver.findElement(By.cssSelector("[id='btn2'"));
+        SkipSigninelement.click();
         WebElement switchToElement= driver.findElement(By.xpath("//a[text()='SwitchTo']"));
         Actions Action= new Actions(driver);
         Action.moveToElement(switchToElement).perform();
