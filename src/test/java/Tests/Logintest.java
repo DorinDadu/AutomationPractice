@@ -1,10 +1,10 @@
 package Tests;
 
 import Base.SharedData;
+import Help.ElementMethods;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 
@@ -13,10 +13,11 @@ public class Logintest extends SharedData {
     //Declaram variabila webdriver
 
 
-
+     public ElementMethods elementMethods;
 
     @Test
     public void login(){
+        elementMethods=new ElementMethods(driver);
 
         WebElement signinElement=driver.findElement(By.id("btn1"));
         signinElement.click();
@@ -33,12 +34,10 @@ public class Logintest extends SharedData {
         enterelement.click();
 
         WebElement errormsgelement=driver.findElement(By.id("errormsg"));
-        String expectedmsg="Invalid User Name or PassWord";
-        String actualmsg=errormsgelement.getText();
-        Assert.assertEquals("textul cautat nu e corect",expectedmsg,actualmsg);
+        elementMethods.validateElementText(errormsgelement, "Invalid User Name or PassWord");
         //quit=inchide instanta cu toate taburile deschise
         //close= inchide tabul curent
-        driver.close();
+        //driver.close();
     }
 
 }

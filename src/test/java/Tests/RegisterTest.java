@@ -1,21 +1,24 @@
 package Tests;
 
 import Base.SharedData;
+import Help.ElementMethods;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.WebDriver;
-
 import java.util.List;
+import org.openqa.selenium.WebElement;
 
 public class RegisterTest extends SharedData {
+    public ElementMethods elementMethods;
+
 
     @Test
-
     public void Register(){
 
+        elementMethods= new ElementMethods(driver);
 
-
+        WebElement skipsighninElement=driver.findElement(By.id("btn2"));
+        skipsighninElement.click();
         WebElement firstnameElement=driver.findElement(By.cssSelector("input[placeholder='First Name']"));
         firstnameElement.click();
         String firstname="Dorin";
@@ -63,8 +66,7 @@ public class RegisterTest extends SharedData {
 
 
         WebElement skills=driver.findElement(By.id("Skills"));
-        Select dropdownskills= new Select(skills);
-        dropdownskills.selectByVisibleText("Java");
+        elementMethods.selectElementBytext(skills, "Java");
 
 
 
@@ -75,21 +77,16 @@ public class RegisterTest extends SharedData {
 
 
         WebElement year=driver.findElement(By.id("yearbox"));
-        Select yearSelect= new Select(year);
-        yearSelect.selectByValue("1970");
-        year.click();
+        elementMethods.selectElementByvalue(year, "1970");
+
 
 
         WebElement month=driver.findElement(By.cssSelector("select[placeholder='Month']"));
-        Select monthSelect=new Select(month);
-        monthSelect.selectByValue("January");
-        month.click();
+        elementMethods.selectElementBytext(month, "January");
 
 
         WebElement day=driver.findElement(By.id("daybox"));
-        Select daySelect= new Select(day);
-        daySelect.selectByValue("14");
-        day.click();
+        elementMethods.selectElementByvalue(day, "14");
 
         
 
@@ -109,10 +106,10 @@ public class RegisterTest extends SharedData {
         WebElement submitElement=driver.findElement(By.id("submitbtn"));
         submitElement.click();
 
-       WebElement refreshElement=driver.findElement(By.id("Button1"));
+        WebElement refreshElement=driver.findElement(By.id("Button1"));
         refreshElement.click();
 
-        driver.quit();
+
 
 
     }
