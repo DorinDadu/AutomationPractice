@@ -18,29 +18,34 @@ public class FrameTest extends SharedData {
          elementMethods =new ElementMethods(driver);
 
         WebElement SkipSigninelement=driver.findElement(By.cssSelector("[id='btn2'"));
-        SkipSigninelement.click();
+        elementMethods.clickElement(SkipSigninelement);
+
         WebElement switchToElement= driver.findElement(By.xpath("//a[text()='SwitchTo']"));
         Actions Action= new Actions(driver);
         Action.moveToElement(switchToElement).perform();
 
         WebElement framesElement= driver.findElement(By.xpath("//a[text()='Frames']"));
-        framesElement.click();
+        elementMethods.clickElement(framesElement);
+
 
         driver.navigate().to("http://demo.automationtesting.in/Frames.html");
 
         frameMethods.switchtoFrameByid("singleframe");
+
         WebElement inputText = driver.findElement(By.cssSelector("div>input[type='text']"));
-        inputText.sendKeys("Sete");
+        elementMethods.fillElement(inputText, "Sete");
 
         frameMethods.switchToDefault();
 
         WebElement multipleFrame = driver.findElement(By.cssSelector("a[href='#Multiple']"));
-        multipleFrame.click();
+        elementMethods.clickElement(multipleFrame);
 
         frameMethods.switchtoFrameByElement(driver.findElement(By.cssSelector("iframe[src='MultipleFrames.html']")));
         frameMethods.switchtoFrameByElement(driver.findElement(By.cssSelector("iframe[src='SingleFrame.html']")));
+
         WebElement inputText2 =driver.findElement(By.cssSelector("div>input[type='text']"));
-        inputText2.sendKeys("Imi e mai sete");
+        elementMethods.fillElement(inputText2,"Imi e mai sete");
+
 
 
 

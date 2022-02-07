@@ -2,8 +2,10 @@ package Tests;
 
 import Base.SharedData;
 import Help.ElementMethods;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.Select;
 import java.util.List;
 import org.openqa.selenium.WebElement;
@@ -18,40 +20,31 @@ public class RegisterTest extends SharedData {
         elementMethods= new ElementMethods(driver);
 
         WebElement skipsighninElement=driver.findElement(By.id("btn2"));
-        skipsighninElement.click();
+        elementMethods.clickElement(skipsighninElement);
+
         WebElement firstnameElement=driver.findElement(By.cssSelector("input[placeholder='First Name']"));
-        firstnameElement.click();
-        String firstname="Dorin";
-        firstnameElement.sendKeys(firstname);
+        elementMethods.fillElement(firstnameElement,"Dorin");
 
         WebElement lastnameElement=driver.findElement(By.cssSelector("input[placeholder='Last Name']"));
-        firstnameElement.click();
-        String lastname="Puscasu";
-        lastnameElement.sendKeys(lastname);
+        elementMethods.fillElement(lastnameElement, "Puscasu");
 
         WebElement adressElement=driver.findElement(By.cssSelector("textarea[ng-model='Adress']"));
-        adressElement.click();
-        String adress="Cluj-Napoca, Str. Doua avioane, nr.7";
-        adressElement.sendKeys(adress);
+        elementMethods.fillElement(adressElement, "Cluj-Napoca, Str. Doua avioane, nr. 7");
 
         WebElement emailAdressElement=driver.findElement(By.cssSelector("input[type='email']"));
-        emailAdressElement.click();
-        String emailAdress="dorinP@yahoo.com";
-        emailAdressElement.sendKeys(emailAdress);
+        elementMethods.fillElement(emailAdressElement, "DirinP@dogmail.com");
 
         WebElement phoneElement=driver.findElement(By.cssSelector("input[type='tel']"));
-        phoneElement.click();
-        String phone="123456";
-        phoneElement.sendKeys(phone);
+        elementMethods.fillElement(phoneElement, "555-23457");
 
         WebElement maleElement= driver.findElement(By.cssSelector("input[value='Male']"));
-        maleElement.click();
+       elementMethods.clickElement(maleElement);
 
         WebElement hobbiesElement=driver.findElement(By.cssSelector("input[id='checkbox2']"));
-        hobbiesElement.click();
+        elementMethods.clickElement(hobbiesElement);
 
         WebElement languages=driver.findElement(By.id("msdd"));
-        languages.click();
+        elementMethods.clickElement(languages);
         JavascriptExecutor js=(JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,400)");
         List<WebElement> languageOptions= driver.findElements(By.cssSelector(".ui-autocomplete.ui-front>li>a"));
@@ -60,54 +53,42 @@ public class RegisterTest extends SharedData {
             || (languageOptions.get(index).getText().equals("Arabic"))){
                 languageOptions.get(index).click();
             }
-
             }
-
-
 
         WebElement skills=driver.findElement(By.id("Skills"));
         elementMethods.selectElementBytext(skills, "Java");
 
-
-
         WebElement countryInput = driver.findElement(By.cssSelector("span[role='combobox']"));
-        countryInput.click();
-        countryInput.sendKeys("Australia");
-        countryInput.sendKeys(Keys.ENTER);
+        elementMethods.clickElement(countryInput);
+        List<WebElement> countryOptions= driver.findElements(By.cssSelector(".select2-hidden-accessible>option"));
+        for (int index=0;index< countryOptions.size();index++) {
+            if (countryOptions.get(index).getText().equals("Australia")) {
+                elementMethods.clickElement(countryOptions.get(index));
+                countryInput.sendKeys(Keys.ENTER);
 
+            }
 
+        }
         WebElement year=driver.findElement(By.id("yearbox"));
         elementMethods.selectElementByvalue(year, "1970");
-
-
 
         WebElement month=driver.findElement(By.cssSelector("select[placeholder='Month']"));
         elementMethods.selectElementBytext(month, "January");
 
-
         WebElement day=driver.findElement(By.id("daybox"));
         elementMethods.selectElementByvalue(day, "14");
 
-        
-
         WebElement passwordElement=driver.findElement(By.cssSelector("input[ng-model='Password']"));
-        passwordElement.click();
-        String password="alibaba_40";
-        passwordElement.sendKeys(password);
+        elementMethods.fillElement(passwordElement, "alibaba_40");
 
         WebElement confirmpasswordElement=driver.findElement(By.cssSelector("input[ng-model='CPassword']"));
-        confirmpasswordElement.click();
-        String confirmpassword="alibaba_40";
-        confirmpasswordElement.sendKeys(confirmpassword);
-
-        WebElement uploadFileElement= driver.findElement(By.cssSelector("div>input[id=\"imagesrc\"]"));
-        uploadFileElement.sendKeys("C:\\Users\\Dadu\\Desktop\\IMG-20200606-WA0003.jpg");
+        elementMethods.fillElement(confirmpasswordElement, "alibaba_40");
 
         WebElement submitElement=driver.findElement(By.id("submitbtn"));
-        submitElement.click();
+        elementMethods.clickElement(submitElement);
 
         WebElement refreshElement=driver.findElement(By.id("Button1"));
-        refreshElement.click();
+        elementMethods.clickElement(refreshElement);
 
 
 
