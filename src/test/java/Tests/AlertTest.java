@@ -1,64 +1,30 @@
 package Tests;
 
 import Base.SharedData;
-import Help.AlertMethods;
-import Help.ElementMethods;
-import Help.PageMethods;
+import Pages.AlertPage;
+import Pages.IndexPage;
+import Pages.RegisterPage;
 import org.junit.Test;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
-import java.util.List;
 
 public class AlertTest extends SharedData {
 
-    public ElementMethods elementMethods;
-    public PageMethods pageMethods;
-    public AlertMethods alertMethods;
+    public IndexPage indexPage;
+    public RegisterPage registerPage;
+    public AlertPage alertPage;
 
     @Test
-    public void TestAutomat(){
-        elementMethods = new ElementMethods(driver);
+    public void TestAutomat() {
 
-        WebElement SkipSigninelement=driver.findElement(By.cssSelector("[id='btn2'"));
-        elementMethods.clickElement(SkipSigninelement);
-        pageMethods=new PageMethods(driver);
+        indexPage = new IndexPage(driver);
+        registerPage = new RegisterPage(driver);
+        alertPage = new AlertPage(driver);
 
-        WebElement switchToElement= driver.findElement(By.xpath("//a[text()='SwitchTo']"));
-        elementMethods.movetoElement(switchToElement);
+        indexPage.clickSkipSignIn();
 
-        WebElement alertsElement= driver.findElement(By.xpath("//a[text()='Alerts']"));
-        elementMethods.clickElement(alertsElement);
+        registerPage.goToAlertPage();
 
-        pageMethods.navigatetoURL("http://demo.automationtesting.in/Alerts.html");
-
-        List<WebElement> alertOption= driver.findElements(By.cssSelector(".nav-tabs>li>a"));
-
-        //alertOption.get(0).click();
-       //WebElement alertOk = driver.findElement(By.cssSelector("#OKTab>button"));
-        //elementMethods.clickElement(alertOk);
-        //Wait explicit
-        //WebDriverWait waitExplicit= new WebDriverWait(driver, Duration.ofSeconds(20));
-        //waitExplicit.until(ExpectedConditions.alertIsPresent());
-
-        //alertOption.get(1).click();
-        //WebElement alertOkCancel = driver.findElement(By.cssSelector("#CancelTab>button"));
-        //alertOkCancel.click();
-       //alertMethods.acceptAlert();
-       //alertMethods.cancelAlert();
-
-        alertOption.get(2).click();
-        WebElement alertTextbox = driver.findElement(By.cssSelector("#Textbox>button"));
-        elementMethods.clickElement(alertTextbox);
-
-
+        alertPage.alertOkProcess();
+        alertPage.alertOkCancelProcess();
+        alertPage.alertTextProcess("Dorin");
     }
-
-
 }

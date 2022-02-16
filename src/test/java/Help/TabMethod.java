@@ -18,6 +18,10 @@ public class TabMethod {
         System.out.println("Titlul paginii 2: "+driver.getTitle());
     }
 
+    public void closeCurrentTab(){
+        driver.quit();
+    }
+
     public void closeTab(){
 
         driver.close();
