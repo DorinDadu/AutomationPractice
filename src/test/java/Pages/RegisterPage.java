@@ -58,7 +58,7 @@ public class RegisterPage {
     public WebElement countryInputElement;
     @FindBy(id = "yearbox")
     public WebElement yearElement;
-    @FindBy(css = "input[id='imagesrc']")
+    @FindBy(css = "div>input[id='imagesrc']")
     public WebElement uploadElement;
     @FindBy(css = "input[id='firstpassword']")
     public WebElement passwordElement;
@@ -158,13 +158,12 @@ public class RegisterPage {
         elementMethods.fillElement(confirmPasswordElement, value);
     }
 
-    public void registerValidProcess(String firstName,String lastName, String address, String file, String email,
+    public void registerValidProcess(String firstName,String lastName, String address, String email,
                                      String phone, String language, String skill, String country,
-                                     String year,String password, String confirmP ){
+                                     String year, String password, String confirmP ){
         fillFirstName(firstName);
         fillLastName(lastName);
         fillAddress(address);
-        uploadFile(file);
         fillEmail(email);
         fillPhone(phone);
         clickGender();
@@ -176,4 +175,6 @@ public class RegisterPage {
         fillPassword(password);
         fillConfirmPassword(confirmP);
     }
+
+
 }
