@@ -1,13 +1,14 @@
 package Tests;
 
-import Base.SharedData;
+import Base.Hooks;
 import Pages.FramePage;
 import Pages.IndexPage;
 import Pages.RegisterPage;
 import org.junit.Test;
 
 
-public class FrameTest extends SharedData {
+public class FrameTest extends Hooks {
+
      public IndexPage indexPage;
      public FramePage framePage;
      public RegisterPage registerPage;
@@ -16,9 +17,9 @@ public class FrameTest extends SharedData {
 
    @Test
    public void framesTest(){
-        indexPage = new IndexPage(driver);
-        framePage = new FramePage(driver);
-        registerPage = new RegisterPage(driver);
+        indexPage = new IndexPage(getDriver());
+        framePage = new FramePage(getDriver());
+        registerPage = new RegisterPage(getDriver());
 
 
         indexPage.clickSkipSignIn();

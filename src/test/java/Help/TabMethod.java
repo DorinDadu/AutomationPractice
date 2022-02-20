@@ -19,11 +19,9 @@ public class TabMethod {
     }
 
     public void closeCurrentTab(){
-        driver.quit();
-    }
-
-    public void closeTab(){
 
         driver.close();
+
     }
+
 }

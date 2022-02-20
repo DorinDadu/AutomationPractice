@@ -1,46 +1,25 @@
 package Pages;
 
-import Help.ElementMethods;
-import Help.FrameMethods;
-import Help.PageMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class FramePage {
+public class FramePage extends BasePage{
 
-    public WebDriver driver;
-    public ElementMethods elementMethods;
-    public FrameMethods frameMethods;
-    public PageMethods pageMethods;
-
-
-    public FramePage(WebDriver driver) {
-        this.driver = driver;
-        elementMethods = new ElementMethods(driver);
-        frameMethods = new FrameMethods(driver);
-        pageMethods = new PageMethods(driver);
-        PageFactory.initElements(driver, this);
-    }
+    public FramePage(WebDriver driver) { super(driver);}
 
     @FindBy(id="singleframe")
-    public WebElement singleframeElement;
-
+    private WebElement singleframeElement;
     @FindBy(css="div>input[type='text']")
-    public WebElement inputTextElement;
-
+    private WebElement inputTextElement;
     @FindBy(css = "a[href='#Multiple']")
-    public WebElement multipleframeElement;
-
+    private WebElement multipleframeElement;
     @FindBy(css = "iframe[src='MultipleFrames.html']")
-    public WebElement multipleFrame;
-
+    private WebElement multipleFrame;
     @FindBy(css = "iframe[src='SingleFrame.html']")
-    public WebElement singleFrame;
-
+    private WebElement singleFrame;
     @FindBy(css="div>input[type='text']")
-    public WebElement inputText2Element;
+    private WebElement inputText2Element;
 
     public void gotosingleframe(){
         frameMethods.switchtoFrameByElement(singleframeElement);
