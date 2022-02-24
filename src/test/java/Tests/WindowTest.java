@@ -1,7 +1,6 @@
 package Tests;
 
 import Base.Hooks;
-import Base.SharedData;
 import Pages.IndexPage;
 import Pages.RegisterPage;
 import Pages.WindowPage;

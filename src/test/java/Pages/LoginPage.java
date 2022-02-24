@@ -17,7 +17,7 @@ public class LoginPage extends BasePage {
     private WebElement passwordElement;
     @FindBy(id = "enterbtn")
     private WebElement enterElement;
-    @FindBy(css = "label[id='errormsg']")
+    @FindBy(xpath = "//*[@id=\"errormsg\"]")
     private WebElement errorMessageElement;
 
     //metode
@@ -39,5 +39,12 @@ public class LoginPage extends BasePage {
         clickEnter();
 
     }
+    public void loginInvalidProcess(HashMap<String, String> inputData){
+        fillEmail(inputData.get("email"));
+        clickEnter();
+        elementMethods.validateElementText(errorMessageElement, inputData.get("errorMsg"));
+
+    }
+
 }
 

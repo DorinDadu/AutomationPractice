@@ -5,21 +5,20 @@ import Pages.IndexPage;
 import Pages.LoginPage;
 import org.junit.Test;
 
-
-public class Logintest extends Hooks {
-
+public class InvalidLoginTest extends Hooks {
     public IndexPage indexPage;
     public LoginPage loginPage;
 
     @Test
-    public void login(){
+    public void invalidLoginFlow() {
 
         indexPage = new IndexPage(getDriver());
         loginPage = new LoginPage(getDriver());
 
         indexPage.clickSignIn();
-        loginPage.loginValidProcess(inputData);
-
-
+        loginPage.loginInvalidProcess(inputData);
     }
+
+
+
 }
