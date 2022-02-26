@@ -18,48 +18,44 @@ public class ElementMethods {
         this.driver = driver;
     }
 
-    public void clickElement(WebElement element){
+    public void clickElement(WebElement element) {
         waitElement(element);
         element.click();
 
     }
 
-    public void waitElement(WebElement element){
-        WebDriverWait Wait= new WebDriverWait(driver, Duration.ofSeconds(60));
+    public void waitElement(WebElement element) {
+        WebDriverWait Wait = new WebDriverWait(driver, Duration.ofSeconds(60));
         Wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-    public void fillElement(WebElement element, String value){
+    public void fillElement(WebElement element, String value) {
         waitElement(element);
         element.sendKeys(value);
     }
 
-    public void movetoElement(WebElement element){
+    public void movetoElement(WebElement element) {
         waitElement(element);
-        Actions Action= new Actions(driver);
+        Actions Action = new Actions(driver);
         Action.moveToElement(element).perform();
     }
 
-    public void validateElementText(WebElement element, String value){
+    public void validateElementText(WebElement element, String value) {
 
         waitElement(element);
-        String actualmsg=element.getText();
-        Assert.assertEquals("textul cautat nu e corect",value,actualmsg);
+        String actualmsg = element.getText();
+        Assert.assertEquals("textul cautat nu e corect", value, actualmsg);
     }
 
-    public void selectElementBytext(WebElement element, String value){
-        Select dropdownskills= new Select(element);
+    public void selectElementBytext(WebElement element, String value) {
+        Select dropdownskills = new Select(element);
         dropdownskills.selectByVisibleText(value);
     }
 
-    public void selectElementByvalue(WebElement element, String value){
-        Select dropdownskills= new Select(element);
+    public void selectElementByvalue(WebElement element, String value) {
+        Select dropdownskills = new Select(element);
         dropdownskills.selectByValue(value);
     }
-
-
-
-
 
 
 }

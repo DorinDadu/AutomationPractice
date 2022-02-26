@@ -18,7 +18,7 @@ public class Hooks extends SharedData {
         InitializeDriver();
         //incarc pentru fiecare test fisierul de resource corespunzator
         String className = this.getClass().getSimpleName();
-        PropertiesObject testData = new PropertiesObject("testsResources/"+className+"Resource");
+        PropertiesObject testData = new PropertiesObject("testsResources/" + className + "Resource");
         inputData = testData.getAllKeyValues();
     }
 

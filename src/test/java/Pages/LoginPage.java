@@ -8,7 +8,9 @@ import java.util.HashMap;
 
 public class LoginPage extends BasePage {
 
-    public LoginPage(WebDriver driver){ super(driver);}
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     //elemente
     @FindBy(css = "input[placeholder='E mail']")
@@ -21,25 +23,26 @@ public class LoginPage extends BasePage {
     private WebElement errorMessageElement;
 
     //metode
-    public void fillEmail(String value){
+    public void fillEmail(String value) {
         elementMethods.fillElement(emailElement, value);
     }
 
-    public void fillPassword(String value){
+    public void fillPassword(String value) {
         elementMethods.fillElement(passwordElement, value);
     }
 
-    public void clickEnter(){
+    public void clickEnter() {
         elementMethods.clickElement(enterElement);
     }
 
-    public void loginValidProcess(HashMap<String, String> inputData){
+    public void loginValidProcess(HashMap<String, String> inputData) {
         fillEmail(inputData.get("email"));
         fillPassword(inputData.get("password"));
         clickEnter();
 
     }
-    public void loginInvalidProcess(HashMap<String, String> inputData){
+
+    public void loginInvalidProcess(HashMap<String, String> inputData) {
         fillEmail(inputData.get("email"));
         clickEnter();
         elementMethods.validateElementText(errorMessageElement, inputData.get("errorMsg"));

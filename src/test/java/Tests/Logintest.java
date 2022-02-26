@@ -12,7 +12,7 @@ public class Logintest extends Hooks {
     public LoginPage loginPage;
 
     @Test
-    public void login(){
+    public void login() {
 
         indexPage = new IndexPage(getDriver());
         loginPage = new LoginPage(getDriver());

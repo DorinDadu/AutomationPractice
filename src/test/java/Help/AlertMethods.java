@@ -33,9 +33,9 @@ public class AlertMethods {
         alert.dismiss();
     }
 
-    public void acceptFillAlert(String value){
+    public void acceptFillAlert(String value) {
         waitAlert();
-        Alert alert=driver.switchTo().alert();
+        Alert alert = driver.switchTo().alert();
         alert.sendKeys(value);
         alert.accept();
     }

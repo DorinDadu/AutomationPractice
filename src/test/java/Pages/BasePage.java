@@ -13,7 +13,7 @@ public class BasePage {
     public PageMethods pageMethods;
     public TabMethod tabMethod;
 
-    public BasePage(WebDriver driver){
+    public BasePage(WebDriver driver) {
         this.driver = driver;
         elementMethods = new ElementMethods(driver);
         alertMethods = new AlertMethods(driver);

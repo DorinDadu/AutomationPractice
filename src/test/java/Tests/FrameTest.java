@@ -14,24 +14,23 @@ public class FrameTest extends Hooks {
      public RegisterPage registerPage;
 
 
+     @Test
+     public void framesTest() {
+          indexPage = new IndexPage(getDriver());
+          framePage = new FramePage(getDriver());
+          registerPage = new RegisterPage(getDriver());
 
-   @Test
-   public void framesTest(){
-        indexPage = new IndexPage(getDriver());
-        framePage = new FramePage(getDriver());
-        registerPage = new RegisterPage(getDriver());
 
+          indexPage.clickSkipSignIn();
+          registerPage.goToFramePage();
+          framePage.gotosingleframe();
+          framePage.fillinputTextElement();
+          framePage.switchtoURL();
+          framePage.clickMultipleFrame();
+          framePage.switchtomultipleElement();
+          framePage.switchtoSingleElement();
+          framePage.fillinputText2Element();
 
-        indexPage.clickSkipSignIn();
-        registerPage.goToFramePage();
-        framePage.gotosingleframe();
-        framePage.fillinputTextElement();
-        framePage.switchtoURL();
-        framePage.clickMultipleFrame();
-        framePage.switchtomultipleElement();
-        framePage.switchtoSingleElement();
-        framePage.fillinputText2Element();
-
-    }
+     }
 
 }

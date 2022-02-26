@@ -12,7 +12,7 @@ public class WindowTest extends Hooks {
     public WindowPage windowPage;
 
     @Test
-    public void windowTest(){
+    public void windowTest() {
 
         indexPage = new IndexPage(getDriver());
         registerPage = new RegisterPage(getDriver());
@@ -27,7 +27,6 @@ public class WindowTest extends Hooks {
         windowPage.multipleTabsProcess();
 
     }
-
 
 
 }

@@ -11,7 +11,9 @@ import java.util.List;
 
 public class RegisterPage extends BasePage {
 
-    public RegisterPage(WebDriver driver){ super(driver);}
+    public RegisterPage(WebDriver driver) {
+        super(driver);
+    }
 
 
     @FindBy(xpath = "//a[text()='SwitchTo']")
@@ -55,101 +57,102 @@ public class RegisterPage extends BasePage {
     @FindBy(css = "input[id='secondpassword']")
     private WebElement confirmPasswordElement;
 
-    public void goToFramePage(){
+    public void goToFramePage() {
         elementMethods.movetoElement(switchToElement);
         elementMethods.clickElement(alertsElement);
         pageMethods.navigatetoURL("http://demo.automationtesting.in/Frames.html");
     }
-    public void goToAlertPage(){
+
+    public void goToAlertPage() {
         elementMethods.movetoElement(switchToElement);
         elementMethods.clickElement(alertsElement);
         pageMethods.navigatetoURL("http://demo.automationtesting.in/Alerts.html");
     }
 
-    public void goToWindowPage(){
+    public void goToWindowPage() {
         elementMethods.movetoElement(switchToElement);
         elementMethods.clickElement(windowsElement);
         pageMethods.navigatetoURL("http://demo.automationtesting.in/Windows.html");
     }
 
-    public void fillFirstName(String value){
+    public void fillFirstName(String value) {
         elementMethods.fillElement(firstNameElement, value);
     }
 
-    public void fillLastName(String value){
+    public void fillLastName(String value) {
         elementMethods.fillElement(lastNameElement, value);
     }
 
-    public void fillAddress(String value){
+    public void fillAddress(String value) {
         elementMethods.fillElement(addressElement, value);
     }
 
-    public void fillEmail(String value){
+    public void fillEmail(String value) {
         elementMethods.fillElement(emailElement, value);
     }
 
-    public void fillPhone(String value){
+    public void fillPhone(String value) {
         elementMethods.fillElement(phoneElement, value);
     }
 
-    public void clickGender(){
+    public void clickGender() {
         elementMethods.clickElement(genderElement);
     }
 
-    public void clickHobby(){
+    public void clickHobby() {
         elementMethods.clickElement(hobbyElement);
     }
 
-    public void chooseLanguages(String value){
+    public void chooseLanguages(String value) {
         elementMethods.clickElement(languagesElement);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
-        for (int index = 0;index < languagesOptionsElement.size();index++){
-            if (languagesOptionsElement.get(index).getText().equals(value)){
+        for (int index = 0; index < languagesOptionsElement.size(); index++) {
+            if (languagesOptionsElement.get(index).getText().equals(value)) {
                 languagesOptionsElement.get(index).click();
             }
         }
     }
 
-    public void chooseLanguages(List<String> values){
+    public void chooseLanguages(List<String> values) {
         elementMethods.clickElement(languagesElement);
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,300)");
-        for (int index = 0;index < languagesOptionsElement.size();index++){
-            if (values.contains(languagesOptionsElement.get(index).getText())){
+        for (int index = 0; index < languagesOptionsElement.size(); index++) {
+            if (values.contains(languagesOptionsElement.get(index).getText())) {
                 languagesOptionsElement.get(index).click();
             }
         }
     }
 
-    public void selectSkill(String value){
+    public void selectSkill(String value) {
         elementMethods.selectElementBytext(skillsElement, value);
     }
 
-    public void chooseCountry(String value){
+    public void chooseCountry(String value) {
         elementMethods.clickElement(countryElement);
         countryInputElement.sendKeys(value);
         countryInputElement.sendKeys(Keys.ENTER);
     }
 
-    public void selectYear(String value){
+    public void selectYear(String value) {
         elementMethods.selectElementByvalue(yearElement, value);
     }
 
-    public void uploadFile(String value){
+    public void uploadFile(String value) {
         elementMethods.fillElement(uploadElement, value);
     }
 
-    public void fillPassword(String value){
+    public void fillPassword(String value) {
         elementMethods.fillElement(passwordElement, value);
     }
 
-    public void fillConfirmPassword(String value){
+    public void fillConfirmPassword(String value) {
         elementMethods.fillElement(confirmPasswordElement, value);
     }
 
 
-    public void registerValidProcess(HashMap<String, String> inputData){
+    public void registerValidProcess(HashMap<String, String> inputData) {
         fillFirstName(inputData.get("firstName"));
         fillLastName(inputData.get("lastName"));
         fillAddress(inputData.get("adress"));

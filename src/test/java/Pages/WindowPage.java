@@ -8,7 +8,9 @@ import java.util.List;
 
 public class WindowPage extends BasePage {
 
-    public WindowPage(WebDriver driver){ super(driver);}
+    public WindowPage(WebDriver driver) {
+        super(driver);
+    }
 
     @FindBy(css = ".nav-tabs>li>a")
     private List<WebElement> windowOptionsElement;
@@ -19,7 +21,7 @@ public class WindowPage extends BasePage {
     @FindBy(css = "#Multiple>button")
     private WebElement newWindowTabElement;
 
-    public void newTabProcess(){
+    public void newTabProcess() {
         windowOptionsElement.get(0).click();
         elementMethods.clickElement(newTabElement);
 
@@ -28,7 +30,7 @@ public class WindowPage extends BasePage {
         tabMethod.switchToTab(0);
     }
 
-    public void newWindowProcess(){
+    public void newWindowProcess() {
         windowOptionsElement.get(1).click();
         elementMethods.clickElement(newWindowElement);
 
@@ -37,7 +39,7 @@ public class WindowPage extends BasePage {
         tabMethod.switchToTab(0);
     }
 
-    public void multipleTabsProcess(){
+    public void multipleTabsProcess() {
         windowOptionsElement.get(2).click();
         elementMethods.clickElement(newWindowTabElement);
 
